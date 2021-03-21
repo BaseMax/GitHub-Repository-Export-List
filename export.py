@@ -13,7 +13,7 @@ def check_user(username):
 	json_data = json.loads(response.text)
 	return json_data
 
-def get_repos(username, page=1):
+def get_repos(username, page):
 	url = "https://api.github.com/users/" + username + "/repos?per_page=100&page=" + str(page)
 	response = requests.get(url)
 	json_data = json.loads(response.text)
@@ -60,23 +60,26 @@ def group_by_languages(repos):
 	languages = {}
 	for repo in repos:
 		if repo["language"] == "" or repo["language"] == None:
-			repo["language"] = "other"
+			lang = "other"
 		else:
-			repo["language"] = str(repo["language"])
+			lang = str(repo["language"])
 
-		if repo["language"] not in languages:
-			languages[ repo["language"] ] = []
+		if lang not in languages:
+			languages[lang] = []
 
-		languages[ repo["language"] ].append(repo)
+		languages[lang].append(repo)
 
 	return languages
 
 def generate_html(groups):
-	print("<h1>" + profile["name"] + " GitHub</h1>")
+	# title
+	print("<title>" + profile["name"] + " GitHub</title>")
+	# h1/name
+	print("<h1>" + profile["name"] + " GitHub</h1>\n")
 
 	for language, repos in groups.items():
 
-		print("<b>"+ language +"</b>\n") # TODO: upper-case first char of language name
+		print("<b>"+ language +"</b>") # TODO: upper-case first char of language name
 		print("<ul>")
 
 		for repo in repos:
@@ -95,7 +98,7 @@ try:
 	# print(profile)
 	# print(profile["public_repos"])
 	public_repos = profile["public_repos"]
-except IndexError:
+except KeyError:
 	public_repos = 0
 
 if public_repos:
