@@ -9,6 +9,7 @@ A tiny script to get list of all repository of a GitHub user and generate HTML o
 - Auto pagination to get list of all repos
 - Groupination repos by its main language name
 - Groupination non-language repo to other
+- Generate **HTML** output page
 
 ## Using GitHub export repositories
 
@@ -35,5 +36,7 @@ While I was writing and testing, I seemed to be blocked and GitHub servers no lo
 - Remove the example code from lib file (export.py)
 - Create examples and tests file
 - Publish the package to pip
+- Generate JSON output
+- Generate csv output
 
 © Copyright Max Base
