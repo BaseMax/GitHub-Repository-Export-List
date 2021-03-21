@@ -49,8 +49,9 @@ def get_all_repos(username, public_repos):
 
 	items = []
 
-	for page in range(pages):
-		res = get_repos(username, page)
+	for page in range(pages): # page starts from 0
+		# print("Download page:", page+1)
+		res = get_repos(username, page+1)
 		# print(res)
 		items.extend(res)
 
