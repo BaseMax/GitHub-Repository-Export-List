@@ -86,8 +86,8 @@ def generate_html(groups):
 		for repo in repos:
 			# print(repo)
 			print("  <li>")
-			print("    <a href=\"" + repo["link"] +"\" alt=\"" + repo["name"] + "\">" + repo["name"] + "</a>: ")
-			print("    <span>" + repo["description"] + "</span>")
+			print("    <a href=\"" + str(repo["link"]) +"\" alt=\"" + str(repo["name"]) + "\">" + str(repo["name"]) + "</a>: ")
+			print("    <span>" + str(repo["description"]) + "</span>")
 			print("  </li>")
 
 		print("</ul>\n")
