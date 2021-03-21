@@ -7,8 +7,8 @@ A tiny script to get list of all repository of a GitHub user and generate HTML o
 Set your username at export.py file. then:
 
 ```bash
-$ git clone https://github.com/BaseMax/GitHub-Repository-List/
-$ cd GitHub-Repository-List
+$ git clone https://github.com/BaseMax/GitHub-Repository-Export-List/
+$ cd GitHub-Repository-Export-List
 $ python export.py > output.html
 ```
 
