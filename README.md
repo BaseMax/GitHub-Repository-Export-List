@@ -1,8 +1,8 @@
-# GitHub-Repository-List
+# GitHub Repository Export List
 
 A tiny script to get list of all repository of a GitHub user and generate HTML output with style.
 
-## Using
+## Using GitHub export repositories
 
 ```bash
 $ git clone https://github.com/BaseMax/GitHub-Repository-List/
