@@ -22,6 +22,12 @@ $ python export.py > output.html
 
 You can watch/see example HTML generated in output.html at [here](https://basemax.github.io/GitHub-Repository-Export-List/output.html).
 
+### Rate Limit
+
+Keep in mind that the GitHub server has limitations.
+
+While I was writing and testing, I seemed to be blocked and GitHub servers no longer answered, so I had to use the `torsocks` to continue the project.
+
 ### TODO
 
 - Get username from `$argv`
