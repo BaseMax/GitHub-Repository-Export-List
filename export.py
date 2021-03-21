@@ -86,7 +86,7 @@ def generate_html(groups):
 			print("    <span>" + repo["description"] + "</span>")
 			print("  </li>")
 
-	print("</ul>\n")
+		print("</ul>\n")
 
 username="basemax"
 profile = check_user(username)
