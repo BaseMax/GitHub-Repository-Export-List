@@ -71,20 +71,7 @@ def group_by_languages(repos):
 
 	return languages
 
-username="basemax"
-profile = check_user(username)
-
-try:
-	# print(profile)
-	# print(profile["public_repos"])
-	public_repos = profile["public_repos"]
-except IndexError:
-	public_repos = 0
-
-if public_repos:
-	all_repos = get_all_repos(username, public_repos)
-	groups = group_by_languages(all_repos)
-
+def generate_html(groups):
 	print("<h1>" + profile["name"] + " GitHub</h1>")
 
 	for language, repos in groups.items():
@@ -100,6 +87,24 @@ if public_repos:
 			print("  </li>")
 
 	print("</ul>\n")
-	print(res)
+
+username="basemax"
+profile = check_user(username)
+
+try:
+	# print(profile)
+	# print(profile["public_repos"])
+	public_repos = profile["public_repos"]
+except IndexError:
+	public_repos = 0
+
+if public_repos:
+	all_repos = get_all_repos(username, public_repos)
+
+	groups = group_by_languages(all_repos)
+	# print(groups)
+
+	# generate HTML output
+	generate_html(groups)
 else:
 	print("Error: No public repositories or maybe network problem!")
