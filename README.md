@@ -10,4 +10,6 @@ $ cd GitHub-Repository-List
 $ python export.py > output.html
 ```
 
+You can watch/see example HTML generated in output.html at [here](https://basemax.github.io/GitHub-Repository-List/output.html).
+
 © Copyright Max Base
