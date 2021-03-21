@@ -92,6 +92,21 @@ def get_all_repos(username, public_repos):
 
 	return items
 
+def group_by_languages(repos):
+	languages = {}
+	for repo in repos:
+		if repo["language"] == "" or repo["language"] == None:
+			repo["language"] = "other"
+		else:
+			repo["language"] = str(repo["language"])
+
+		if repo["language"] not in languages:
+			languages[ repo["language"] ] = []
+
+		languages[ repo["language"] ].append(repo)
+
+	return languages
+
 username="basemax"
 res = check_user(username)
 
@@ -104,6 +119,7 @@ except IndexError:
 
 if res["public_repos"] > 0:
 	res = get_all_repos(username, public_repos)
+	res = group_by_languages(res)
 	print(res)
 else:
 	print("Error: No public repositories or maybe network problem!")
