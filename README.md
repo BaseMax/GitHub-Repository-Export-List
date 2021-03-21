@@ -7,7 +7,7 @@ A tiny script to get list of all repository of a GitHub user and generate HTML o
 ```bash
 $ git clone https://github.com/BaseMax/GitHub-Repository-List/
 $ cd GitHub-Repository-List
-$ php export.php > output.html
+$ python export.py > output.html
 ```
 
 © Copyright Max Base
