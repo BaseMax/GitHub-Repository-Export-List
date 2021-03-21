@@ -2,6 +2,14 @@
 
 A tiny script to get list of all repository of a GitHub user and generate HTML output with style.
 
+## Features of github-repos-exporter
+
+- Auto get name from username
+- Auto detect number of repositories
+- Auto pagination to get list of all repos
+- Groupination repos by its main language name
+- Groupination non-language repo to other
+
 ## Using GitHub export repositories
 
 Set your username at export.py file. then:
