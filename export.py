@@ -11,42 +11,6 @@ def check_user(username):
 	# Note: if you put a / at the end of url, this will not works!
 	response = requests.get(url)
 	json_data = json.loads(response.text)
-	'''
-	{
-	  "login": "BaseMax",
-	  "id": 2658040,
-	  "node_id": "MDQ6VXNlcjI2NTgwNDA=",
-	  "avatar_url": "https://avatars.githubusercontent.com/u/2658040?v=4",
-	  "gravatar_id": "",
-	  "url": "https://api.github.com/users/BaseMax",
-	  "html_url": "https://github.com/BaseMax",
-	  "followers_url": "https://api.github.com/users/BaseMax/followers",
-	  "following_url": "https://api.github.com/users/BaseMax/following{/other_user}",
-	  "gists_url": "https://api.github.com/users/BaseMax/gists{/gist_id}",
-	  "starred_url": "https://api.github.com/users/BaseMax/starred{/owner}{/repo}",
-	  "subscriptions_url": "https://api.github.com/users/BaseMax/subscriptions",
-	  "organizations_url": "https://api.github.com/users/BaseMax/orgs",
-	  "repos_url": "https://api.github.com/users/BaseMax/repos",
-	  "events_url": "https://api.github.com/users/BaseMax/events{/privacy}",
-	  "received_events_url": "https://api.github.com/users/BaseMax/received_events",
-	  "type": "User",
-	  "site_admin": false,
-	  "name": "Max Base",
-	  "company": "@GitHub Developer Maintainer",
-	  "blog": "https://maxbase.org/",
-	  "location": "The Internet, Remote",
-	  "email": null,
-	  "hireable": true,
-	  "bio": "@github developer.\r\nFull-Time Open-Sourcerer.\r\nFull-stack programmer. In the path of a real computer engineer...",
-	  "twitter_username": "MaxProgram",
-	  "public_repos": 293,
-	  "public_gists": 2,
-	  "followers": 4999,
-	  "following": 0,
-	  "created_at": "2012-10-26T15:18:10Z",
-	  "updated_at": "2021-03-21T17:56:46Z"
-	}
-	'''
 	return json_data
 
 def get_repos(username, page=1):
@@ -108,18 +72,33 @@ def group_by_languages(repos):
 	return languages
 
 username="basemax"
-res = check_user(username)
+profile = check_user(username)
 
 try:
-	# print(res)
-	# print(res["public_repos"])
-	public_repos = res["public_repos"]
+	# print(profile)
+	# print(profile["public_repos"])
+	public_repos = profile["public_repos"]
 except IndexError:
 	public_repos = 0
 
-if res["public_repos"] > 0:
-	res = get_all_repos(username, public_repos)
-	res = group_by_languages(res)
+if public_repos:
+	all_repos = get_all_repos(username, public_repos)
+	groups = group_by_languages(all_repos)
+
+	print("<h1>" + profile["name"] + " GitHub</h1>")
+
+	for language, repos in groups.items():
+
+		print("<b>"+ language +"</b>") # TODO: upper-case first char of language name
+		print("<ul>")
+
+		for repo in repos:
+			print("  <li>")
+			print("    <a href=\"" + repo.link +"\" alt=\"" + repo.name + "\">" + repo.name + "</a>: ")
+			print("    <span>" + repo.description + "</span>")
+			print("  </li>")
+
+	print("</ul>\n")
 	print(res)
 else:
 	print("Error: No public repositories or maybe network problem!")
