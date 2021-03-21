@@ -14,12 +14,12 @@ $ python export.py > output.html
 
 You can watch/see example HTML generated in output.html at [here](https://basemax.github.io/GitHub-Repository-List/output.html).
 
-## TODO
+### TODO
 
-- Get username from argv
-- Move functions to a class
-- Remove example code from lib file
+- Get username from `$argv`
+- Move functions to a new class
+- Remove the example code from lib file (export.py)
 - Create examples and tests file
-- Publish package to pip
+- Publish the package to pip
 
 © Copyright Max Base
