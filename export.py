@@ -76,7 +76,7 @@ def generate_html(groups):
 
 	for language, repos in groups.items():
 
-		print("<b>"+ language +"</b>") # TODO: upper-case first char of language name
+		print("<b>"+ language +"</b>\n") # TODO: upper-case first char of language name
 		print("<ul>")
 
 		for repo in repos:
