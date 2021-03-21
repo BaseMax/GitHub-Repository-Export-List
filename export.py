@@ -68,6 +68,7 @@ def group_by_languages(repos):
 		if lang not in languages:
 			languages[lang] = []
 
+		# TODO: remove language field from repo
 		languages[lang].append(repo)
 
 	return languages
