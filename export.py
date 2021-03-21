@@ -71,10 +71,10 @@ def get_repos(username, page=1):
 		# print(link)
 
 		items.append({
-			name: name,
-			language: language,
-			description: description,
-			link: link,
+			"name": name,
+			"language": language,
+			"description": description,
+			"link": link,
 		})
 		
 	# print("-----------------------")
