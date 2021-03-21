@@ -1,6 +1,6 @@
 # Max Base
 # 2021-03-21
-# https://github.com/BaseMax/GitHub-Repository-List
+# https://github.com/BaseMax/GitHub-Repository-Export-List
 
 import json
 import math
