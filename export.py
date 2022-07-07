@@ -1,7 +1,7 @@
 # Max Base
 # 2021-03-21
 # https://github.com/BaseMax/GitHub-Repository-Export-List
-
+import sys
 import json
 import math
 import requests
@@ -93,7 +93,7 @@ def generate_html(groups):
 
 		print("</ul>\n")
 
-username="basemax"
+username= sys.argv[1]
 profile = check_user(username)
 
 try:
