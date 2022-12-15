@@ -2,6 +2,7 @@
 # 2021-03-21
 # https://github.com/BaseMax/GitHub-Repository-Export-List
 
+import sys
 import time
 import json
 import math
@@ -66,7 +67,10 @@ def group_by_languages(repos):
 
 	return languages
 
-def generate_html(groups):
+def generate_html(profile, groups):
+	if profile["name"] == None:
+		profile["name"] = profile["login"]
+
 	print("<title>" + profile["name"] + " GitHub</title>")
 	print("<h1>" + profile["name"] + " GitHub</h1>\n")
 
@@ -83,21 +87,32 @@ def generate_html(groups):
 
 		print("</ul>\n")
 
-username="basemax"
-profile = check_user(username)
+if __name__ == "__main__":
+	# check args
+	if len(sys.argv) != 2:
+		username="basemax"
+	else:
+		username = sys.argv[1]
 
-try:
-	public_repos = profile["public_repos"]
-except KeyError:
-	public_repos = 0
+	profile = check_user(username)
+	if profile == None or profile == "" or profile == {} or profile == []:
+		print("Error: User not found!")
+		exit()
+	elif "message" in profile and profile["message"] == "Not Found":
+		print("Error: User not found!")
+		exit()
 
-if public_repos:
-	all_repos = get_all_repos(username, public_repos)
+	try:
+		public_repos = profile["public_repos"]
+	except KeyError:
+		public_repos = 0
 
-	groups = group_by_languages(all_repos)
-	# print(groups)
+	if public_repos:
+		all_repos = get_all_repos(username, public_repos)
 
-	# generate HTML output
-	generate_html(groups)
-else:
-	print("Error: No public repositories or maybe network problem!")
+		groups = group_by_languages(all_repos)
+
+		# generate HTML output
+		generate_html(profile, groups)
+	else:
+		print("Error: No public repositories or maybe network problem!")
